@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SprintLog | Daily Study &amp; Code Sprint Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="container header-flex">
+      <div>
+        <span class="brand-badge">SPRINTLOG WORKSPACE</span>
+        <h1>Daily Study &amp; Code Sprint Tracker</h1>
+      </div>
+      <div class="date-pill" id="currentDate"></div>
+    </div>
+  </header>
+
+  <main class="container workspace-grid">
+    <section class="panel form-panel">
+      <h2>Add Sprint Task</h2>
+      <p class="panel-sub">Break down today’s learning or coding goals into focused, trackable milestones.</p>
+
+      <form id="taskForm" novalidate>
+        <div class="field">
+          <label for="taskTitle">Task or Module *</label>
+          <input type="text" id="taskTitle" placeholder="e.g. Build DOM event listeners for form validation" required>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="taskTrack">Focus Track</label>
+            <select id="taskTrack">
+              <option value="Frontend">Frontend (HTML/CSS/JS)</option>
+              <option value="Backend">Backend &amp; APIs</option>
+              <option value="CS Theory">CS &amp; Algorithms</option>
+              <option value="Portfolio">Portfolio &amp; Git</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="taskMinutes">Target Time (Mins)</label>
+            <input type="number" id="taskMinutes" min="10" max="360" step="5" value="45">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="taskPriority">Priority Level</label>
+          <select id="taskPriority">
+            <option value="High">High Priority</option>
+            <option value="Medium" selected>Medium Priority</option>
+            <option value="Low">Low Priority</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-primary">ADD TO TODAY'S SPRINT</button>
+      </form>
+
+      <div class="sprint-summary-card">
+        <div class="summary-header">
+          <span>Sprint Completion</span>
+          <strong id="progressPercent">0%</strong>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressBar"></div>
+        </div>
+        <div class="metrics-row">
+          <div class="metric">
+            <span class="metric-val" id="completedCount">0</span>
+            <span class="metric-lbl">Completed</span>
+          </div>
+          <div class="metric">
+            <span class="metric-val" id="pendingCount">0</span>
+            <span class="metric-lbl">Remaining</span>
+          </div>
+          <div class="metric">
+            <span class="metric-val" id="totalMinutes">0m</span>
+            <span class="metric-lbl">Logged Time</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel list-panel">
+      <div class="list-toolbar">
+        <div class="filter-tabs" role="tablist">
+          <button type="button" class="tab active" data-filter="all">All Tasks</button>
+          <button type="button" class="tab" data-filter="active">In Progress</button>
+          <button type="button" class="tab" data-filter="completed">Completed</button>
+        </div>
+        <button type="button" class="btn-clear" id="clearCompletedBtn">Clear Completed</button>
+      </div>
+
+      <ul class="task-list" id="taskList"></ul>
+
+      <div class="empty-state" id="emptyState" hidden>
+        <h3>No sprint tasks in this view</h3>
+        <p>Add a coding or study milestone on the left to start tracking your progress.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <div class="container">
+      <p>SprintLog • Built with Vanilla JavaScript &amp; LocalStorage Persistence</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
